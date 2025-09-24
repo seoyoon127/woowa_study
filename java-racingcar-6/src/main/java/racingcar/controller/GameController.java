@@ -4,7 +4,6 @@ import racingcar.domain.Car;
 import racingcar.domain.Cars;
 import racingcar.utils.MoveStrategy;
 import racingcar.view.InputView;
-import camp.nextstep.edu.missionutils.Randoms;
 import racingcar.view.OutputView;
 
 import java.util.List;
@@ -32,6 +31,8 @@ public class GameController {
         List<String> carNames = inputView.readNames();
         Cars cars = new Cars(carNames);
         int tryCount = inputView.readNumber();
+
+        outputView.printResultNotice();
         for (int i=0; i<tryCount; i++){
             for (Car car : cars.getCars()){
                 run(car);
