@@ -5,6 +5,7 @@ import racingcar.domain.Car;
 import racingcar.utils.TestAlwaysMove;
 import racingcar.utils.TestNeverMove;
 import racingcar.view.InputView;
+import racingcar.view.OutputView;
 
 import java.util.List;
 
@@ -14,7 +15,7 @@ class GameControllerTest {
     @Test
     void run_canMove(){
         Car car = new Car("car");
-        GameController controller = new GameController(new InputView(), new TestAlwaysMove());
+        GameController controller = new GameController(new InputView(),new OutputView(), new TestAlwaysMove());
 
         controller.run(car);
 
@@ -25,7 +26,7 @@ class GameControllerTest {
     @Test
     void run_cantMove(){
         Car car = new Car("car");
-        GameController controller = new GameController(new InputView(), new TestNeverMove());
+        GameController controller = new GameController(new InputView(), new OutputView(),new TestNeverMove());
 
         controller.run(car);
 
