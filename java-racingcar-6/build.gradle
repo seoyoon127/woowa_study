@@ -10,8 +10,12 @@ repositories {
     maven { url 'https://jitpack.io' }
 }
 
+//dependencies {
+//    implementation 'com.github.woowacourse-projects:mission-utils:1.1.0'
+//}
 dependencies {
     implementation 'com.github.woowacourse-projects:mission-utils:1.1.0'
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.10.0'
 }
 
 java {
@@ -20,6 +24,11 @@ java {
     }
 }
 
-test {
+//test {
+//    maxParallelForks = 1
+//}
+
+
+tasks.test {
     useJUnitPlatform()
 }
