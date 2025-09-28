@@ -11,6 +11,7 @@ import java.util.stream.Collectors;
 public class InputView {
     static String START_MSG = "숫자 야구 게임을 시작합니다.";
     static String INPUT_MSG = "숫자를 입력해주세요 : ";
+    static String END_MSG = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
 
     public void print_start(){
         System.out.println(START_MSG);
@@ -22,13 +23,27 @@ public class InputView {
         return Validation.validateNumber(inputNum);
     }
 
+    public Integer input_endNum(){
+        System.out.println(END_MSG);
+        String endNum = Console.readLine();
+        return Validation.validateEndNum(endNum);
+    }
+
     public static class Validation{
 
         public static List<Integer> validateNumber(String inputValue){
             validateIsNumber(inputValue);
             validateLength3(inputValue);
             List<Integer> inputList = saveAsList(inputValue);
+            validateAllDifferent(inputList);
             return inputList;
+        }
+
+        public static Integer validateEndNum(String endNum){
+            validateIsNumber(endNum);
+            Integer endNumber = Integer.parseInt(endNum);
+            validateOneOrTwo(endNumber);
+            return endNumber;
         }
 
         // 입력값이 숫자가 맞는지 검증
@@ -76,6 +91,15 @@ public class InputView {
             return inputList.size() == new HashSet<>(inputList).size();
         }
 
-        // 게임 끝난 후, 입력값이 1 또는2인지 검증
+        // 게임 끝난 후, 입력값이 1 또는 2인지 검증
+        public static void validateOneOrTwo(Integer endNum){
+            if (!isOneOrTwo(endNum)){
+                throw new IllegalArgumentException("1 또는 2를 입력해야 합니다.");
+            }
+        }
+
+        public static boolean isOneOrTwo(Integer endNum){
+            return endNum == 1 || endNum == 2;
+        }
     }
 }
