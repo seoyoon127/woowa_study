@@ -12,13 +12,10 @@ public class BaseballController {
     private OutputView outputView;
     private Integer replayNum;
 
-    public BaseballController() {
-        replayNum = 1;
-    }
-
     public BaseballController(InputView inputView, OutputView outputView) {
         this.inputView = inputView;
         this.outputView = outputView;
+        replayNum = 1;
     }
 
     public void run(){

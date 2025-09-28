@@ -9,14 +9,19 @@ public class OutputView {
     }
 
     public void print_result(Integer strike, Integer ball){
-        StringBuilder sb = new StringBuilder();
-        if (ball > 0){
-            sb.append(ball).append("볼 ");
+        if (strike == 0 && ball == 0){
+            System.out.println("낫띵");
         }
-        if (strike > 0){
-            sb.append(strike).append("스트라이크");
+        else{
+            StringBuilder sb = new StringBuilder();
+            if (ball > 0){
+                sb.append(ball).append("볼 ");
+            }
+            if (strike > 0){
+                sb.append(strike).append("스트라이크");
+            }
+            System.out.println(sb.toString());
         }
-        System.out.println(sb.toString());
     }
 
     public void print_three_strike(){

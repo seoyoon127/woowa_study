@@ -12,13 +12,13 @@ public class InputView {
     static String END_MSG = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
 
     public List<Integer> input_numbers(){
-        System.out.println(INPUT_MSG);
+        System.out.print(INPUT_MSG);
         String inputNum = Console.readLine();
         return Validation.validateNumber(inputNum);
     }
 
     public Integer input_endNum(){
-        System.out.println(END_MSG);
+        System.out.print(END_MSG);
         String endNum = Console.readLine();
         return Validation.validateEndNum(endNum);
     }
