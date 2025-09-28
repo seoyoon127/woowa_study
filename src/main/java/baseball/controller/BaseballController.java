@@ -3,23 +3,26 @@ package baseball.controller;
 import baseball.domain.ComputerNum;
 import baseball.domain.Result;
 import baseball.view.InputView;
+import baseball.view.OutputView;
 
 import java.util.List;
 
 public class BaseballController {
     private InputView inputView;
+    private OutputView outputView;
     private Integer replayNum;
 
     public BaseballController() {
         replayNum = 1;
     }
 
-    public BaseballController(InputView inputView) {
+    public BaseballController(InputView inputView, OutputView outputView) {
         this.inputView = inputView;
+        this.outputView = outputView;
     }
 
     public void run(){
-        inputView.print_start();
+        outputView.print_start();
         start();
     }
 
@@ -32,13 +35,18 @@ public class BaseballController {
     }
     public void compare(ComputerNum computerNum){
         List<Integer> list = inputView.input_numbers();
+        Result result = new Result();
         for (int i=0; i<3; i++){
             int index = computerNum.getIndexOfNum(list.get(i));
-            Result result = new Result();
             setResult(result, index, i);
         }
-        // OutputView(strikeNum, ballNum);
-
+        Integer strike = result.getStrike();
+        Integer ball = result.getBall();
+        outputView.print_result(strike, ball);
+        if (strike == 3 && ball == 0){
+            outputView.print_three_strike();
+            replay();
+        }
     }
 
     public void setResult(Result result, int index, int i){
