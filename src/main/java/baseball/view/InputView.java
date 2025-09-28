@@ -20,20 +20,22 @@ public class InputView {
 
     private static class Validation{
 
-        public static List<Integer> validateNumber(String inputNum){
-            validateIsNumber(inputNum);
+        public static List<Integer> validateNumber(String inputValue){
+            validateIsNumber(inputValue);
+            validateLength3(inputValue);
+
         }
 
         // 입력값이 숫자가 맞는지 검증
-        public static void validateIsNumber(String inputNum){
-            if (!isNumber(inputNum)){
+        public static void validateIsNumber(String inputValue){
+            if (!isNumber(inputValue)){
                 throw new IllegalArgumentException("입력값은 숫자여야 합니다.");
             }
         }
 
-        public static boolean isNumber(String inputNum){
+        public static boolean isNumber(String inputValue){
             try {
-                Integer.parseInt(inputNum);
+                Integer.parseInt(inputValue);
                 return true;
             } catch (NumberFormatException e) {
                 return false;
@@ -41,6 +43,15 @@ public class InputView {
         }
 
         // 3자리 수인지 검증
+        public static void validateLength3(String inputValue){
+            if (!isLength3(inputValue)){
+                throw new IllegalArgumentException("세자리 숫자를 입력하셔야 합니다.").
+            }
+        }
+
+        public static boolean isLength3(String inputValue){
+            return inputValue.length() == 3;
+        }
 
         // 리스트로 저장
 
