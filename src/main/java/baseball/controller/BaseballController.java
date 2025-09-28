@@ -39,32 +39,12 @@ public class BaseballController {
     }
     public void compare(ComputerNum computerNum){
         List<Integer> list = inputView.input_numbers();
-        Result result = calculateResult(computerNum, list);
+        Result result = Result.of(computerNum, list);
 
         outputView.print_result(result.getStrike(), result.getBall());
         if (result.getStrike() == LENGTH){
             outputView.print_three_strike();
             isPlaying = false;
-        }
-    }
-
-    public Result calculateResult(ComputerNum computerNum, List<Integer> list){
-        Result result = new Result();
-        for (int i=0; i<LENGTH; i++){
-            int index = computerNum.getIndexOfNum(list.get(i));
-            setResult(result, index, i);
-        }
-        return result;
-    }
-
-    public void setResult(Result result, int index, int i){
-        if (index != -1){
-            if (index == i){
-                result.plusStrike();
-            }
-            else{
-                result.plusBall();
-            }
         }
     }
 
