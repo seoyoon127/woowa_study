@@ -12,6 +12,10 @@ public class BaseballController {
     private OutputView outputView;
     private boolean isPlaying;
 
+    private static final int LENGTH = 3;
+    private static final int GAME_RESTART = 1;
+
+
     public BaseballController(InputView inputView, OutputView outputView) {
         this.inputView = inputView;
         this.outputView = outputView;
@@ -36,14 +40,14 @@ public class BaseballController {
     public void compare(ComputerNum computerNum){
         List<Integer> list = inputView.input_numbers();
         Result result = new Result();
-        for (int i=0; i<3; i++){
+        for (int i=0; i<LENGTH; i++){
             int index = computerNum.getIndexOfNum(list.get(i));
             setResult(result, index, i);
         }
         Integer strike = result.getStrike();
         Integer ball = result.getBall();
         outputView.print_result(strike, ball);
-        if (strike == 3 && ball == 0){
+        if (strike == LENGTH && ball == 0){
             outputView.print_three_strike();
             isPlaying = false;
         }
@@ -61,6 +65,6 @@ public class BaseballController {
     }
 
     public boolean replay(){
-        return inputView.input_endNum() == 1;
+        return inputView.input_endNum() == GAME_RESTART;
     }
 }
