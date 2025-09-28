@@ -20,12 +20,15 @@ public class BaseballController {
 
     public void run(){
         outputView.print_start();
-        start();
+        do{
+            start();
+        } while(replay());
     }
 
     public void start(){
         ComputerNum computerNum = new ComputerNum();
         computerNum.setComputerNum();
+        isPlaying = true;
         while (isPlaying){
             compare(computerNum);
         }
@@ -42,7 +45,7 @@ public class BaseballController {
         outputView.print_result(strike, ball);
         if (strike == 3 && ball == 0){
             outputView.print_three_strike();
-            replay();
+            isPlaying = false;
         }
     }
 
@@ -57,13 +60,7 @@ public class BaseballController {
         }
     }
 
-    public void replay(){
-        Integer endNum = inputView.input_endNum();
-        if (endNum == 1){
-            start();
-        }
-        else{
-            isPlaying = false;
-        }
+    public boolean replay(){
+        return inputView.input_endNum() == 1;
     }
 }
