@@ -10,12 +10,12 @@ import java.util.List;
 public class BaseballController {
     private InputView inputView;
     private OutputView outputView;
-    private Integer replayNum;
+    private boolean isPlaying;
 
     public BaseballController(InputView inputView, OutputView outputView) {
         this.inputView = inputView;
         this.outputView = outputView;
-        replayNum = 1;
+        isPlaying = true;
     }
 
     public void run(){
@@ -26,7 +26,7 @@ public class BaseballController {
     public void start(){
         ComputerNum computerNum = new ComputerNum();
         computerNum.setComputerNum();
-        while (replayNum == 1){
+        while (isPlaying){
             compare(computerNum);
         }
     }
@@ -63,7 +63,7 @@ public class BaseballController {
             start();
         }
         else{
-            replayNum = endNum;
+            isPlaying = false;
         }
     }
 }
