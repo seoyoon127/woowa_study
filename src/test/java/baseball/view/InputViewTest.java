@@ -13,6 +13,7 @@ class InputViewTest {
     String isNum = "123";
     String isNotNum = "abs";
     String isNumOver = "1234";
+    String isDupilicate = "112";
 
     @Test
     void test_validateIsNumber_success(){
@@ -46,4 +47,17 @@ class InputViewTest {
         assertThat(list.get(2)).isEqualTo(3);
     }
 
+    @Test
+    void test_validateAllDifferent_success(){
+        List<Integer> list = InputView.Validation.saveAsList(isNum);
+        InputView.Validation.validateAllDifferent(list);
+    }
+
+    @Test
+    void test_validateAllDifferent_error(){
+        List<Integer> list = InputView.Validation.saveAsList(isDupilicate);
+        assertThrows(IllegalArgumentException.class, () -> {
+            InputView.Validation.validateAllDifferent(list);
+        });
+    }
 }

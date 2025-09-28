@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Console;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -65,6 +66,16 @@ public class InputView {
         }
 
         // 서로 다른 수로 구성되었는지 검증
+        public static void validateAllDifferent(List<Integer> inputList){
+            if (!isAllDifferent(inputList)){
+                throw new IllegalArgumentException("세 자리 모두 다른 숫자로 구성되어야 합니다.");
+            }
+        }
+
+        public static boolean isAllDifferent(List<Integer> inputList){
+            return inputList.size() == new HashSet<>(inputList).size();
+        }
+
         // 게임 끝난 후, 입력값이 1 또는2인지 검증
     }
 }
