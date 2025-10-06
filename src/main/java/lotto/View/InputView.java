@@ -31,6 +31,8 @@ public class InputView {
                 System.out.println(LOTTO_NUMBER_MSG);
                 String strLotto = Console.readLine();
                 return InputValidator.validateLottoList(strLotto);
+            } catch (NumberFormatException e){
+                System.out.println("[ERROR] 숫자를 입력해 주세요.");
             } catch (IllegalArgumentException e){
                 System.out.println(e.getMessage());
             }

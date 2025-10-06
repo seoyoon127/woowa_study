@@ -4,6 +4,9 @@ import org.junit.jupiter.api.*;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
@@ -47,6 +50,29 @@ class InputViewTest {
 
         Integer cost = iv.input_cost();
         assertThat(cost).isEqualTo(3000);
+    }
+
+    @Test
+    @DisplayName("당첨번호 입력 성공")
+    void test_input_lottoList(){
+        setInput("1,2,3,4,5,6");
+        List<Integer> lottoList = iv.input_lottoList();
+        assertThat(lottoList).isEqualTo(Arrays.asList(1, 2, 3, 4, 5, 6));
+    }
+
+    @Test
+    @DisplayName("당첨번호 입력 실패 시 재시작")
+    void test_input_lottoList_retry(){
+        String invalidInput1 = "1,2,3\n";
+        String invalidInput2 = "abc,def,g,h,i,j\n";
+        String invalidInput3 = "46,0,1,2,3,4\n";
+        String validInput = "1,2,3,4,5,6\n";
+
+        String combinedInput = invalidInput1 + invalidInput2 + invalidInput3 + validInput;
+        setInput(combinedInput);
+
+        List<Integer> lottoList = iv.input_lottoList();
+        assertThat(lottoList).isEqualTo(Arrays.asList(1, 2, 3, 4, 5, 6));
     }
 
 }

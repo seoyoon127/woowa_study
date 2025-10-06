@@ -6,6 +6,8 @@ import java.util.stream.Collectors;
 
 
 public class InputValidator {
+    public static Integer LOTTO_NUM = 6;
+
     public static Integer validateCost(String strCost){
         Integer cost = convertToInteger(strCost);
         validateThousandUnit(cost);
@@ -14,6 +16,7 @@ public class InputValidator {
 
     public static List<Integer> validateLottoList(String strLotto){
         List<Integer> lottoList = convertToIntList(strLotto);
+        validateLength(lottoList);
         for (Integer lottoNum :lottoList){
             validateNumRange(lottoNum);
         }
@@ -54,5 +57,15 @@ public class InputValidator {
 
     public static boolean isInRange(Integer lottoNum){
         return lottoNum >= 1 && lottoNum <= 45;
+    }
+
+    public static void validateLength(List<Integer> lottoList){
+        if (!isLengthValid(lottoList)){
+            throw new IllegalArgumentException(String.format("[ERROR] 로또 번호는 %d개를 입력하셔야 합니다.", LOTTO_NUM));
+        }
+    }
+
+    public static boolean isLengthValid(List<Integer> lottoList){
+        return lottoList.size() == LOTTO_NUM;
     }
 }
