@@ -20,6 +20,12 @@ public class InputValidator {
         return lottoList;
     }
 
+    public static Integer validateBonusNum(String strBonus){
+        Integer bonus = convertToInteger(strBonus);
+        validateNumRange(bonus);
+        return bonus;
+    }
+
     public static Integer convertToInteger(String str){
         return Integer.parseInt(str);
     }
