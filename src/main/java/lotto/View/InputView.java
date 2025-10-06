@@ -17,6 +17,8 @@ public class InputView {
                 System.out.println(COST_INPUT_MSG);
                 String strCost = Console.readLine();
                 return InputValidator.validateCost(strCost);
+            } catch (NumberFormatException e){
+                System.out.println("[ERROR] 숫자를 입력해 주세요.");
             } catch (IllegalArgumentException e){
                 System.out.println(e.getMessage());
             }
