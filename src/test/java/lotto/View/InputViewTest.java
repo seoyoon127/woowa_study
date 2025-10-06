@@ -75,4 +75,25 @@ class InputViewTest {
         assertThat(lottoList).isEqualTo(Arrays.asList(1, 2, 3, 4, 5, 6));
     }
 
+    @Test
+    @DisplayName("보너스번호 입력 성공")
+    void test_input_bonusNum(){
+        setInput("3");
+        Integer bonusNum = iv.input_bonusNum();
+        assertThat(bonusNum).isEqualTo(3);
+    }
+
+    @Test
+    @DisplayName("보너스번호 입력 실패 시 재시작")
+    void test_input_bonusNum_retry(){
+        String invalidInput1 = "s\n";
+        String invalidInput2 = "48\n";
+        String validInput = "3";
+
+        String combinedInput = invalidInput1 + invalidInput2 + validInput;
+        setInput(combinedInput);
+
+        Integer bonusNum = iv.input_bonusNum();
+        assertThat(bonusNum).isEqualTo(3);
+    }
 }

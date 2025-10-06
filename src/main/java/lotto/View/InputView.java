@@ -10,6 +10,7 @@ public class InputView {
     static String COST_INPUT_MSG = "구입금액을 입력해 주세요.";
     static String LOTTO_NUMBER_MSG = "당첨 번호를 입력해 주세요.";
     static String BONUS_NUMBER_MSG = "보너스 번호를 입력해 주세요.";
+    static String NUMBER_FORMAT_ERROR_MSG = "[ERROR] 숫자를 입력해 주세요.";
 
     public Integer input_cost(){
         while(true){
@@ -18,7 +19,7 @@ public class InputView {
                 String strCost = Console.readLine();
                 return InputValidator.validateCost(strCost);
             } catch (NumberFormatException e){
-                System.out.println("[ERROR] 숫자를 입력해 주세요.");
+                System.out.println(NUMBER_FORMAT_ERROR_MSG);
             } catch (IllegalArgumentException e){
                 System.out.println(e.getMessage());
             }
@@ -32,7 +33,7 @@ public class InputView {
                 String strLotto = Console.readLine();
                 return InputValidator.validateLottoList(strLotto);
             } catch (NumberFormatException e){
-                System.out.println("[ERROR] 숫자를 입력해 주세요.");
+                System.out.println(NUMBER_FORMAT_ERROR_MSG);
             } catch (IllegalArgumentException e){
                 System.out.println(e.getMessage());
             }
@@ -45,6 +46,8 @@ public class InputView {
                 System.out.println(BONUS_NUMBER_MSG);
                 String strBonus = Console.readLine();
                 return InputValidator.validateBonusNum(strBonus);
+            } catch (NumberFormatException e){
+                System.out.println(NUMBER_FORMAT_ERROR_MSG);
             } catch (IllegalArgumentException e){
                 System.out.println(e.getMessage());
             }
