@@ -1,6 +1,7 @@
 package Utils;
 
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -17,6 +18,7 @@ public class InputValidator {
     public static List<Integer> validateLottoList(String strLotto){
         List<Integer> lottoList = convertToIntList(strLotto);
         validateLength(lottoList);
+        validateDuplicate(lottoList);
         for (Integer lottoNum :lottoList){
             validateNumRange(lottoNum);
         }
@@ -68,4 +70,15 @@ public class InputValidator {
     public static boolean isLengthValid(List<Integer> lottoList){
         return lottoList.size() == LOTTO_NUM;
     }
+
+    public static void validateDuplicate(List<Integer> lottoList){
+        if (isDuplicated(lottoList)){
+            throw new IllegalArgumentException("[ERROR] 중복 번호가 있어서는 안 됩니다.");
+        }
+    }
+
+    public static boolean isDuplicated(List<Integer> lottoList){
+        return new HashSet<>(lottoList).size() != LOTTO_NUM;
+    }
+
 }
