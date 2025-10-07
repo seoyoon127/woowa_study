@@ -16,5 +16,24 @@ public class Lotto {
         }
     }
 
-    // TODO: 추가 기능 구현
+    public List<Integer> getLotto(){
+        return numbers;
+    }
+
+    public Integer compareLotto(List<Integer> winNums){
+        int cnt = 0;
+        for (Integer n : numbers){
+            if (winNums.contains(n)){
+                cnt += 1;
+            }
+        }
+        return cnt;
+    }
+
+    public Integer compareBonus(Integer bonusNum){
+        if (numbers.contains(bonusNum)){
+            return 1;
+        }
+        return 0;
+    }
 }
