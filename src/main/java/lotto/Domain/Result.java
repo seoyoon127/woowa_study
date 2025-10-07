@@ -17,7 +17,7 @@ public class Result {
         this.first = 0;
     }
 
-    public static Result Of(List<Lotto> lottoList, List<Integer> winNums, Integer bonusNum){
+    public static Result of(List<Lotto> lottoList, List<Integer> winNums, Integer bonusNum){
         Result result = new Result();
         for (Lotto lotto : lottoList){
             int correct = lotto.compareLotto(winNums);
