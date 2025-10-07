@@ -18,7 +18,7 @@ public class LottoController {
 
     public void run(){
         Integer cost = inputView.input_cost();
-        outputView.print_cnt(cost);
+        outputView.print_cnt(cost/1000);
 
         LottoList lottoList = LottoList.of (cost/1000);
         outputView.print_lottoList(lottoList);
