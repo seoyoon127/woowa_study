@@ -8,6 +8,7 @@ public class Result {
     private Integer third;
     private Integer second;
     private Integer first;
+    private String profit;
 
     public Result() {
         this.fifth = 0;
@@ -15,6 +16,7 @@ public class Result {
         this.third = 0;
         this.second = 0;
         this.first = 0;
+        this.profit = "";
     }
 
     public static Result of(List<Lotto> lottoList, List<Integer> winNums, Integer bonusNum){
@@ -24,6 +26,7 @@ public class Result {
             int correctB = lotto.compareBonus(bonusNum);
             result.setGrade(correct, correctB);
         }
+        result.setProfit(lottoList.size());
         return result;
     }
 
@@ -48,5 +51,14 @@ public class Result {
         else if (correctTotal == 3){
             fifth += 1;
         }
+    }
+
+    private void setProfit(Integer size){
+        int profit_cost = first * 2000000000 + second * 30000000 + third * 1500000 + fourth * 50000 + fifth * 5000;
+        profit = String.format("%.1f", (double) profit_cost / size);
+    }
+
+    public String getProfit(){
+        return profit;
     }
 }

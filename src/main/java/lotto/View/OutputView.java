@@ -11,7 +11,7 @@ public class OutputView {
     static String RESULT_MSG = "당첨통계\n---\n";
     static List<String> RESULT_LIST_MSG = List.of("3개 일치 (5,000원) - ","4개 일치 (50,000원) - ",
             "5개 일치 (1,500,000원) - ", "5개 일치, 보너스 볼 일치 (30,000,000원) - ", "6개 일치 (2,000,000,000원) - ");
-    static String PROFIT_MSG = "총 수익률은 %.1f%%입니다.";
+    static String PROFIT_MSG = "총 수익률은 %s%%입니다.";
 
     public void print_cnt(Integer cnt){
         System.out.println(cnt + CNT_MSG);
@@ -29,5 +29,6 @@ public class OutputView {
         for (int i=0; i<5; i++){
             System.out.println(RESULT_LIST_MSG.get(i) + results.get(i) + "개");
         }
+        System.out.println(String.format(PROFIT_MSG, result.getProfit()));
     }
 }
