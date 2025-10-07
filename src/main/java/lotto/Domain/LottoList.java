@@ -1,5 +1,7 @@
 package lotto.Domain;
 
+import Utils.RandomLotto;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,7 +15,7 @@ public class LottoList {
     public static LottoList of (Integer listNum){
         List<Lotto> list = new ArrayList<Lotto>();
         for (int i=0; i<listNum; i++){
-            //list.add()
+            list.add(RandomLotto.getLottoNums());
         }
         return new LottoList(list);
     }
