@@ -34,4 +34,20 @@ public class InputValidator {
                 .map(Integer::parseInt)
                 .collect(Collectors.toList());
     }
+
+    public static Integer validateBonusNum(String bonusStr){
+        Integer bonusNum = convertToInt(bonusStr);
+        validateNumRange(bonusNum);
+        return bonusNum;
+    }
+
+    public static void validateNumRange(Integer num){
+        if (!isInRange(num)){
+            throw new IllegalArgumentException("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.");
+        }
+    }
+
+    public static boolean isInRange(Integer num){
+        return num >= 1 && num <= 45;
+    }
 }

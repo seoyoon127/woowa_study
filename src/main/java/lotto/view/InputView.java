@@ -4,11 +4,10 @@ import camp.nextstep.edu.missionutils.Console;
 import lotto.domain.Lotto;
 import lotto.utils.InputValidator;
 
-import java.util.List;
-
 public class InputView {
     static String COST_INPUT_MSG = "구입금액을 입력해 주세요.";
     static String WIN_NUMBERS_INPUT_MSG = "당첨 번호를 입력해 주세요.";
+    static String BONUS_NUMBER_INPUT_MSG = "보너스 번호를 입력해 주세요.";
 
     public Integer input_cost(){
         while(true){
@@ -30,6 +29,20 @@ public class InputView {
                 System.out.println(WIN_NUMBERS_INPUT_MSG);
                 String winNumStr = Console.readLine();
                 return new Lotto(InputValidator.validateWinNums(winNumStr));
+            } catch (NumberFormatException e){
+                System.out.println("[ERROR] 올바른 형식의 숫자를 입력해주세요.");
+            } catch (IllegalArgumentException e){
+                System.out.println(e.getMessage());
+            }
+        }
+    }
+
+    public Integer input_bonusNum(){
+        while(true){
+            try{
+                System.out.println(BONUS_NUMBER_INPUT_MSG);
+                String bonusStr = Console.readLine();
+                return InputValidator.validateBonusNum(bonusStr);
             } catch (NumberFormatException e){
                 System.out.println("[ERROR] 올바른 형식의 숫자를 입력해주세요.");
             } catch (IllegalArgumentException e){

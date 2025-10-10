@@ -60,4 +60,17 @@ class InputViewTest {
         Lotto winLotto = iv.input_winNums();
         assertThat(winLotto.getNumbers()).isEqualTo(List.of(1,2,3,4,5,6));
     }
+
+    @DisplayName("보너스 번호 오류 발생 시 재시작")
+    @Test
+    void test_bonusNumError(){
+        String input1 = "a\n";
+        String input2 = "47\n";
+        String input3 = "4\n";
+        String inputs = input1 + input2 + input3;
+
+        setInput(inputs);
+        Integer bonusNum = iv.input_bonusNum();
+        assertThat(bonusNum).isEqualTo(4);
+    }
 }
