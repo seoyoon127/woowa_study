@@ -61,13 +61,14 @@ class OutputViewTest {
     @Test
     void print_stats(){
         Result result = new Result();
-        ov.output_result(result);
+        ov.output_result(result, 3000);
         String expectedStatsLines = getExpectedOutput(
                 "3개 일치 (5,000원) - 0개",
                 "4개 일치 (50,000원) - 0개",
                 "5개 일치 (1,500,000원) - 0개",
                 "5개 일치, 보너스 볼 일치 (30,000,000원) - 0개",
-                "6개 일치 (2,000,000,000원) - 0개"
+                "6개 일치 (2,000,000,000원) - 0개",
+                "총 수익률은 0.0%입니다."
         );
 
         String expected = OutputView.RESULT_STATS_MSG + System.lineSeparator() + expectedStatsLines;
