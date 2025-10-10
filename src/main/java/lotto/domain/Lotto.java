@@ -45,4 +45,20 @@ public class Lotto {
         return numbers;
     }
 
+    public Integer compareWinNums(List<Integer> winNums){
+        int count = 0;
+        for (Integer num : numbers){
+            if (winNums.contains(num)){
+                count += 1;
+            }
+        }
+        return count;
+    }
+
+    public Integer compareBonusNum(Integer bonusNum){
+        if (numbers.contains(bonusNum)){
+            return 1;
+        }
+        return 0;
+    }
 }

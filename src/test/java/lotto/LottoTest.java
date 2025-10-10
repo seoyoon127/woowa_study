@@ -37,4 +37,20 @@ class LottoTest {
         Lotto lotto = new Lotto(List.of(6,5,4,3,2,1));
         assertThat(lotto.getNumbers()).isEqualTo(List.of(1,2,3,4,5,6));
     }
+
+    @DisplayName("당첨 번호 개수 반환")
+    @Test
+    void lottoWinCount() {
+        Lotto winNums = new Lotto(List.of(1,2,3,4,5,6));
+        Lotto lotto = new Lotto(List.of(1,3,5,7,9,11));
+        assertThat(lotto.compareWinNums(winNums.getNumbers())).isEqualTo(3);
+    }
+
+    @DisplayName("보너스 번호 일치 반환")
+    @Test
+    void lottoBonusCount() {
+        Lotto lotto = new Lotto(List.of(1,3,5,7,9,11));
+        assertThat(lotto.compareBonusNum(11)).isEqualTo(1);
+        assertThat(lotto.compareBonusNum(12)).isEqualTo(0);
+    }
 }
