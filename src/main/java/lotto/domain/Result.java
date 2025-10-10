@@ -43,4 +43,8 @@ public class Result {
         }
         return String.format("%.1f", (double) totalPrize / cost * 100);
     }
+
+    public Map<LottoRank, Integer> getRankCounts() {
+        return rankCounts;
+    }
 }
