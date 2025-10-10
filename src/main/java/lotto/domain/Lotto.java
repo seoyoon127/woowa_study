@@ -1,5 +1,7 @@
 package lotto.domain;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 
@@ -10,7 +12,7 @@ public class Lotto {
         validateLength(numbers);
         validateDuplicate(numbers);
         validateNumRange(numbers);
-        this.numbers = numbers;
+        this.numbers = sortNumbers(numbers);
     }
 
     private void validateLength(List<Integer> numbers) {
@@ -31,6 +33,16 @@ public class Lotto {
                 throw new IllegalArgumentException("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.");
             }
         }
+    }
+
+    private List<Integer> sortNumbers(List<Integer> numbers){
+        List<Integer> mutableNumbers = new ArrayList<>(numbers);
+        Collections.sort(mutableNumbers);
+        return mutableNumbers;
+    }
+
+    public List<Integer> getNumbers(){
+        return numbers;
     }
 
 }
